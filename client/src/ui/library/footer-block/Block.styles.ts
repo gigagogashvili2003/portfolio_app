@@ -8,7 +8,7 @@ export const BlockWrapper = styled.div`
 export const Title = styled.h2`
   color: ${(p) => p.theme.DEFAULT_FONT_COLOR};
   font-size: 1.563rem;
-  font-weight: 700;
+  font-weight: 800;
 `;
 
 export const AdditionalText = styled.p`

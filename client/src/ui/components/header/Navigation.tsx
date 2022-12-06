@@ -12,12 +12,15 @@ const Navigation: React.FC<IProps> = (props) => {
 
   return (
     <NavigationContainer ref={nodeRef}>
+      <div className="menu_title">MENU</div>
       <nav className="nav">
         <ul className="nav_ul">
           <li className="nav_li">
             <NavLink
               onClick={toggleNavigationHandler}
-              className="nav_link"
+              className={(state) =>
+                state.isActive ? "nav_link nav_link_active" : "nav_link"
+              }
               to="/projects"
             >
               Projects
@@ -25,8 +28,10 @@ const Navigation: React.FC<IProps> = (props) => {
           </li>
           <li className="nav_li">
             <NavLink
+              className={(state) =>
+                state.isActive ? "nav_link nav_link_active" : "nav_link"
+              }
               onClick={toggleNavigationHandler}
-              className="nav_link"
               to="/skills"
             >
               Skills
@@ -34,8 +39,10 @@ const Navigation: React.FC<IProps> = (props) => {
           </li>
           <li className="nav_li">
             <NavLink
+              className={(state) =>
+                state.isActive ? "nav_link nav_link_active" : "nav_link"
+              }
               onClick={toggleNavigationHandler}
-              className="nav_link"
               to="/social-media"
             >
               Social Media
@@ -43,8 +50,10 @@ const Navigation: React.FC<IProps> = (props) => {
           </li>
           <li className="nav_li">
             <NavLink
+              className={(state) =>
+                state.isActive ? "nav_link nav_link_active" : "nav_link"
+              }
               onClick={toggleNavigationHandler}
-              className="nav_link"
               to="/about-us"
             >
               About-Us
@@ -52,8 +61,10 @@ const Navigation: React.FC<IProps> = (props) => {
           </li>
           <li className="nav_li">
             <NavLink
+              className={(state) =>
+                state.isActive ? "nav_link nav_link_active" : "nav_link"
+              }
               onClick={toggleNavigationHandler}
-              className="nav_link"
               to="/contact-us"
             >
               Contact Us
@@ -61,8 +72,10 @@ const Navigation: React.FC<IProps> = (props) => {
           </li>
           <li className="nav_li">
             <NavLink
+              className={(state) =>
+                state.isActive ? "nav_link nav_link_active" : "nav_link"
+              }
               onClick={toggleNavigationHandler}
-              className="nav_link"
               to="/about-us"
             >
               About-Us

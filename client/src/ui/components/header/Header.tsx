@@ -14,6 +14,15 @@ const Header = () => {
     setIsNavigationOpen((prevState) => !prevState);
   };
 
+  useEffect(() => {
+    if (isNavigationOpen) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isNavigationOpen]);
+
   return (
     <HeaderWrapper>
       <HeaderLogoBlock>

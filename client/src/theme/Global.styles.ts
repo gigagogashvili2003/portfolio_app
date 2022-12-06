@@ -36,7 +36,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 
-
+	background: #E7F3F1;
 	::-webkit-scrollbar {
 		display: none;
 	}

@@ -95,8 +95,16 @@ export const NavigationContainer = styled.div`
   background-color: ${(p) => p.theme.DEFAULT_FONT_COLOR};
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   z-index: 10;
+
+  .menu_title {
+    color: ${(p) => p.theme.WHITE_COLOR};
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+    opacity: 0.6;
+  }
 
   .nav_ul {
     .nav_li {
@@ -106,6 +114,27 @@ export const NavigationContainer = styled.div`
         font-size: 3rem;
         line-height: 4rem;
         font-weight: 700;
+        opacity: 0.7;
+        transition: opacity 0.3s ease-in-out;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+      .nav_link_active {
+        opacity: 1;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          transform: translate(-125%, -50%);
+
+          width: 5rem;
+          height: 0.3rem;
+          background-color: ${(p) => p.theme.WHITE_BG};
+        }
       }
     }
   }
