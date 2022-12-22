@@ -1,7 +1,9 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express, Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-
+import bodyParser from "body-parser";
+import SkillsRouter from "./routes/skills";
+import cors from "cors";
 import Skill from "./model/skills-schema";
 
 dotenv.config();
@@ -9,8 +11,22 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT as string;
 const DATABASE_URL = process.env.DATABASE_URL as string;
+const allowedOrigins = ["http://localhost:3000"];
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
 
-app.get("/", (req: Request, res: Response) => {
+app.use(cors(options));
+app.use(bodyParser.json());
+app.use(SkillsRouter);
+
+app.get("/", async (req: Request, res: Response, next: NextFunction) => {
+  await new Skill({
+    title: "Mysql",
+    level: "Begginer",
+    description:
+      "Have a basic experience with the mysql, and sequelize (framework of mysql)",
+  }).save();
   res.send("Express + TypeScript Server Jee");
 });
 
@@ -20,14 +36,6 @@ mongoose
     app.listen(port, () => {
       console.log(`[server]: Server is running at https://localhost:${port}`);
     });
-
-    const skill = new Skill({
-      title: "HTML",
-      level: "Experienced",
-      description:
-        "Have created bunch of projects with HTML, also Graduated Frontend course at Acacemy of Digital Industries, Where I learned HTML.",
-    });
-    await skill.save();
   })
   .catch((err) => {
     console.log(err);

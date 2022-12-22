@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { skillsSelector } from "store/skills/skills";
+import { getSkills } from "store/skills/skills-actions";
 import SkillsList from "./SkillsList";
 import {
   SkillsListContainer,
@@ -7,11 +10,18 @@ import {
 } from "./SkillsPage.styles";
 
 const SkillsPage = () => {
+  const dispatch = useAppDispatch();
+  const skills = useAppSelector(skillsSelector);
+
+  useEffect(() => {
+    dispatch(getSkills());
+  }, []);
+
   return (
     <SkillsPageWrapper>
-      <SkillsTitlesBlock>Tech skatck that i'm aware of</SkillsTitlesBlock>
+      <SkillsTitlesBlock>Tech stack that i'm aware of</SkillsTitlesBlock>
       <SkillsListContainer>
-        <SkillsList />
+        <SkillsList skills={skills} />
       </SkillsListContainer>
     </SkillsPageWrapper>
   );
